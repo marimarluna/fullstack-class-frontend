@@ -17,16 +17,14 @@ export class ListProductsComponent implements OnInit {
   }
 
   loadProducts(): void {
-    console.log("load")
     this.productService.getProducts().subscribe(products => {
       this.products = products;
-      console.log(products)
     });
   }
 
   deleteProduct(id: number): void {
     this.productService.deleteProduct(id).subscribe(() => {
-      this.products = this.products.filter(product => product.id !== id);
+      this.products = this.products.filter(product => product._id !== id);
     });
   }
 }
